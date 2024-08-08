@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Bookapp</title>
+  <link rel="stylesheet" href="../bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .btn-container {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .btn-container a {
+      margin: 0 10px;
+    }
+    .filter-container {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .filter-container form {
+      display: inline-block;
+      text-align: left;
+    }
+    .filter-container input,
+    .filter-container select,
+    .filter-container button {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 200px; 
+      display: block;
+    }
+    .filter-container button {
+      width: auto;
+      margin-left: 0;
+    }
+    .categories-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .categories-container div {
+      margin: 5px 10px;
+      display: flex;
+      align-items: center;
+    }
+    .categories-container input {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+    .categories-container label {
+      font-size: 1.2em;
+    }
+    .book-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center; 
+    }
+    .book-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px; 
+      width: 300px; 
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+      overflow: hidden;
+    }
+    .book-item img {
+      max-width: 100%;
+      border-radius: 4px;
+      height: 250px; 
+      object-fit: cover; 
+    }
+    .book-item h2 {
+      font-size: 1.2em;
+      margin: 10px 0;
+      overflow: hidden; 
+      text-overflow: ellipsis; 
+      white-space: nowrap; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bookapp</h1>
+
+   
+    <div class="btn-container">
+      <a href="/books" class="btn btn-primary">Mantenimiento de Libros</a>
+      <a href="/categories" class="btn btn-primary">Mantenimiento de Categorías</a>
+      <a href="/authors" class="btn btn-primary">Mantenimiento de Autores</a>
+      <a href="/publishers" class="btn btn-primary">Mantenimiento de Editoriales</a>
+    </div>
+
+   
+    <div class="filter-container">
+      <form method="GET" action="/">
+        <input type="text" name="title" placeholder="Filter by title" value="<%= title %>">
+        
+        <div class="categories-container">
+          <% categories.forEach(cat => { %>
+            <div>
+              <input type="checkbox" name="categories" value="<%= cat.id %>" 
+                <%= selectedCategories.includes(cat.id.toString()) ? 'checked' : '' %> />
+              <label><%= cat.name %></label>
+            </div>
+          <% }) %>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Filter</button>
+      </form>
+    </div>
+    
+   
+    <div class="book-list">
+      <% books.forEach(book => { %>
+        <div class="book-item">
+          <img src="/images/<%= book.cover %>" alt="Cover">
+          <h2><a href="/books/<%= book.id %>"><%= book.title %></a></h2>
+          <p>Year: <%= book.year %></p>
+          <p>Category: <%= book.Category.name %></p>
+          <p>Author: <%= book.Author.name %></p>
+          <p>Publisher: <%= book.Publisher.name %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>borrar autor</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .btn-container {
+      margin-top: 20px;
+    }
+    .btn-container a, .btn-container button {
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Borrar autor</h1>
+    <p>Estas seguro que quieres borrar este autor? Esto tambien eliminara sus libros</p>
+    <h2><%= author.name %></h2>
+    <p>Email: <%= author.email %></p>
+    <p>Books Count: <%= author.Books.length %></p>
+    <div class="btn-container">
+      <form action="/authors/delete/<%= author.id %>" method="POST">
+        <button type="submit" class="btn btn-danger">Si, borrar</button>
+      </form>
+      <a href="/authors" class="btn btn-secondary">No, Cancelar</a>
+    </div>
+  </div>
+</body>
+</html>

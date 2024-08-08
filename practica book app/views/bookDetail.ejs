@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Libro</title>
+  <link rel="stylesheet" href="../bootstrap.min.css">
+</head>
+<nav>
+    <a href="/">Inicio</a> 
+</nav>
+<body>
+  <h1><%= book.title %></h1>
+  <img src="/images/<%= book.cover %>" alt="<%= book.title %>">
+  <p>Año: <%= book.year %></p>
+  <p>Categoría: <%= book.Category.name %></p>
+  <p>Autor: <%= book.Author.name %></p>
+  <p>Editorial: <%= book.Publisher.name %></p>
+  <p>País de la Editorial: <%= book.Publisher.country %></p>
+  <p>Teléfono de la Editorial: <%= book.Publisher.phone %></p>
+</body>
+</html>

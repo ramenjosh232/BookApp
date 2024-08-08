@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= book ? 'Editar' : 'Agregar' %> Libro</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+</head>
+<body>
+  <h1><%= book ? 'Editar' : 'Agregar' %> Libro</h1>
+  <form method="post" action="<%= book ? '/books/edit/' + book.id : '/books/create' %>" enctype="multipart/form-data">
+    <div>
+      <label for="title">Título:</label>
+      <input type="text" id="title" name="title" value="<%= book ? book.title : '' %>" required>
+    </div>
+    <div>
+      <label for="year">Año:</label>
+      <input type="number" id="year" name="year" value="<%= book ? book.year : '' %>" required>
+    </div>
+    <div>
+      <label for="cover">Portada:</label>
+      <input type="file" id="cover" name="cover">
+      <% if (book && book.cover) { %>
+        <p>Portada actual: <img src="/images/<%= book.cover %>" alt="Portada" width="100"></p>
+        <input type="hidden" name="currentCover" value="<%= book.cover %>">
+      <% } %>
+    </div>
+    <div>
+      <label for="category">Categoría:</label>
+      <select id="category" name="categoryId" required>
+        <% categories.forEach(category => { %>
+          <option value="<%= category.id %>" <%= book && book.categoryId === category.id ? 'selected' : '' %>><%= category.name %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div>
+      <label for="author">Autor:</label>
+      <select id="author" name="authorId" required>
+        <% authors.forEach(author => { %>
+          <option value="<%= author.id %>" <%= book && book.authorId === author.id ? 'selected' : '' %>><%= author.name %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div>
+      <label for="publisher">Editorial:</label>
+      <select id="publisher" name="publisherId" required>
+        <% publishers.forEach(publisher => { %>
+          <option value="<%= publisher.id %>" <%= book && book.publisherId === publisher.id ? 'selected' : '' %>><%= publisher.name %></option>
+        <% }); %>
+      </select>
+    </div>
+    <button type="submit"><%= book ? 'Actualizar' : 'Crear' %> Libro</button>
+  </form>
+</body>
+</html>

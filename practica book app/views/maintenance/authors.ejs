@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mantenimiento autores</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    nav a {
+      font-size: 1.2em;
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-add {
+      display: block;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+    .btn-add a {
+      text-decoration: none;
+      color: #fff;
+    }
+    .author-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .author-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .author-item h2 {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .author-item p {
+      margin: 5px 0;
+    }
+    .author-item a {
+      display: inline-block;
+      margin: 5px 10px;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .author-item a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+
+    <h1>mantenimiento autores</h1>
+    <div class="btn-add">
+      <a href="/authors/create" class="btn btn-primary">agregar nuevo autor</a>
+    </div>
+    
+    <div class="author-list">
+      <% authors.forEach(author => { %>
+        <div class="author-item">
+          <h2><%= author.name %></h2>
+          <p>Email: <%= author.email %></p>
+          <p>Books Count: <%= author.Books.length %></p>
+          <a href="/authors/edit/<%= author.id %>" class="btn btn-secondary">Edit</a>
+          <a href="/authors/delete/<%= author.id %>" class="btn btn-danger" onclick="return confirm('Estas seguro?')">Borrar</a>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>

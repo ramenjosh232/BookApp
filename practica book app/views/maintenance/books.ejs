@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestionar Libros - Bookapp</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    nav a {
+      font-size: 1.2em;
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-add {
+      display: block;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+    .book-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .book-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .book-item img {
+      max-width: 100%;
+      border-radius: 4px;
+      height: 250px;
+      object-fit: cover;
+    }
+    .book-item h2 {
+      font-size: 1.2em;
+      margin: 10px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .book-item p {
+      margin: 5px 0;
+    }
+    .book-item a {
+      display: inline-block;
+      margin: 5px 10px;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .book-item a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">Inicio</a>
+    </nav>
+
+    <h1>Gestionar Libros</h1>
+    <div class="btn-add">
+      <a href="/books/create" class="btn btn-primary">Agregar Nuevo Libro</a>
+    </div>
+    
+    <div class="book-list">
+      <% books.forEach(book => { %>
+        <div class="book-item">
+          <img src="/images/<%= book.cover %>" alt="<%= book.title %>">
+          <h2><%= book.title %></h2>
+          <p>Año: <%= book.year %></p>
+          <p>Categoría: <%= book.Category.name %></p>
+          <p>Autor: <%= book.Author.name %></p>
+          <p>Editorial: <%= book.Publisher.name %></p>
+          <a href="/books/edit/<%= book.id %>" class="btn btn-secondary">Editar</a>
+          <a href="/books/delete/<%= book.id %>" class="btn btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>

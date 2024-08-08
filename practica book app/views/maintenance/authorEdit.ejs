@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Autor</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a> 
+    <a href="/authors">volver a Autores</a>
+  </nav>
+  
+  <h1>Editar Autor</h1>
+  <form method="post" action="/authors/edit/<%= author.id %>">
+    <div>
+      <label for="name">Nombre del autor:</label>
+      <input type="text" id="name" name="name" value="<%= author.name %>" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" value="<%= author.email %>" required>
+    </div>
+    <button type="submit">Editar autor</button>
+  </form>
+</body>
+</html>

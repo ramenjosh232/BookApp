@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>agregar nuevo autor</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a> 
+    <a href="/authors">volver a autores</a>
+  </nav>
+  
+  <h1>agregar nuevo autor</h1>
+  <form method="post" action="/authors/create">
+    <div>
+      <label for="name">nombre del autor:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <button type="submit">crear autor</button>
+  </form>
+</body>
+</html>

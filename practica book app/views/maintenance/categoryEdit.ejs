@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Categoría</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+</head>
+<body>
+  <nav>
+    <a href="/">Inicio</a> 
+    <a href="/categories">Volver a Categorías</a> 
+  </nav>
+  
+  <h1>Editar Categoría</h1>
+  <form method="post" action="/categories/edit/<%= category.id %>">
+    <div>
+      <label for="name">Nombre de la Categoría:</label>
+      <input type="text" id="name" name="name" value="<%= category.name %>" required>
+    </div>
+    <div>
+      <label for="description">Descripción:</label>
+      <textarea id="description" name="description" rows="4" required><%= category.description %></textarea>
+    </div>
+    <button type="submit">Actualizar Categoría</button>
+  </form>
+</body>
+</html>

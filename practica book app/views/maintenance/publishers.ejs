@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestionar Editoriales - Bookapp</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    nav a {
+      font-size: 1.2em;
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-add {
+      display: block;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+    .btn-add a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .publisher-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .publisher-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .publisher-item h2 {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .publisher-item p {
+      margin: 5px 0;
+    }
+    .publisher-item a {
+      display: inline-block;
+      margin: 5px 10px;
+      color: #007bff;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .publisher-item a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">Inicio</a>
+    </nav>
+
+    <h1>Gestionar Editoriales</h1>
+    <div class="btn-add">
+      <a href="/publishers/create" class="btn btn-primary">Agregar Nueva Editorial</a>
+    </div>
+    
+    <div class="publisher-list">
+      <% publishers.forEach(publisher => { %>
+        <div class="publisher-item">
+          <h2><%= publisher.name %></h2>
+          <p>Teléfono: <%= publisher.phone %></p>
+          <p>País: <%= publisher.country %></p>
+          <p>Libros Contados: <%= publisher.Books.length %></p>
+          <a href="/publishers/edit/<%= publisher.id %>" class="btn btn-secondary">Editar</a>
+          <a href="/publishers/delete/<%= publisher.id %>" class="btn btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>

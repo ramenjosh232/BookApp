@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Editorial</title>
+  <link rel="stylesheet" href="../../bootstrap.min.css">
+</head>
+<body>
+  <nav>
+    <a href="/">Inicio</a> 
+    <a href="/publishers">Volver a Editoriales</a> 
+  </nav>
+  
+  <h1>Editar Editorial</h1>
+  <form method="post" action="/publishers/edit/<%= publisher.id %>">
+    <div>
+      <label for="name">Nombre de la Editorial:</label>
+      <input type="text" id="name" name="name" value="<%= publisher.name %>" required>
+    </div>
+    <div>
+      <label for="phone">Teléfono:</label>
+      <input type="text" id="phone" name="phone" value="<%= publisher.phone %>" required>
+    </div>
+    <div>
+      <label for="country">País:</label>
+      <input type="text" id="country" name="country" value="<%= publisher.country %>" required>
+    </div>
+    <button type="submit">Actualizar Editorial</button>
+  </form>
+</body>
+</html>
